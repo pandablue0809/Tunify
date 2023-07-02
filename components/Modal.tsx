@@ -2,26 +2,34 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { IoMdClose } from "react-icons/io";
 
 interface ModalProps {
-  children: React.ReactNode;
   isOpen: boolean;
+  onChange: (open: boolean) => void;
   title: string;
   description: string;
-  onChange: (open: boolean) => void;
+  children: React.ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = ({
   isOpen,
-  children,
   onChange,
   title,
   description,
+  children,
 }) => {
   return (
     <Dialog.Root open={isOpen} defaultOpen={isOpen} onOpenChange={onChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="bg-neutral-900/90 backdrop-blur-sm fixed inset-0" />
+        <Dialog.Overlay
+          className="
+            bg-neutral-900/90 
+            backdrop-blur-sm 
+            fixed 
+            inset-0
+          "
+        />
         <Dialog.Content
-          className="fixed 
+          className="
+            fixed 
             drop-shadow-md 
             border 
             border-neutral-700 
@@ -39,14 +47,16 @@ const Modal: React.FC<ModalProps> = ({
             rounded-md 
             bg-neutral-800 
             p-[25px] 
-            focus:outline-none"
+            focus:outline-none
+          "
         >
           <Dialog.Title
             className="
               text-xl 
               text-center 
               font-bold 
-              mb-4"
+              mb-4
+            "
           >
             {title}
           </Dialog.Title>
@@ -55,7 +65,8 @@ const Modal: React.FC<ModalProps> = ({
               mb-5 
               text-sm 
               leading-normal 
-              text-center"
+              text-center
+            "
           >
             {description}
           </Dialog.Description>
@@ -75,7 +86,8 @@ const Modal: React.FC<ModalProps> = ({
                 items-center 
                 justify-center 
                 rounded-full 
-                focus:outline-none"
+                focus:outline-none
+              "
               aria-label="Close"
             >
               <IoMdClose />

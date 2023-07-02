@@ -1,17 +1,23 @@
-import "./globals.css";
 import { Figtree } from "next/font/google";
 import Sidebar from "@/components/Sidebar";
-import SupabaseProvider from '@/providers/SupabaseProvider'
 import UserProvider from "@/providers/UserProvider";
 import ModalProvider from "@/providers/ModalProvider";
+import SupabaseProvider from "@/providers/SupabaseProvider";
+import ToasterProvider from "@/providers/ToasterProvider";
+import "./globals.css";
+//SupabaseProvider.tsx
+import { SessionContextProvider } from '@supabase/auth-helpers-react'
+
 const font = Figtree({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Tunify",
-  description: "Listen till you die...",
+  description: "Tune it until u die...",
 };
 
-export default function RootLayout({
+export const revalidate = 0;
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -19,12 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
-            <Sidebar>
-              {children}
-            </Sidebar>
+            <Sidebar>{children}</Sidebar>
           </UserProvider>
         </SupabaseProvider>
       </body>
