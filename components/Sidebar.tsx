@@ -15,10 +15,10 @@ import { useMemo } from "react";
 
 interface SidebarProps {
   children: React.ReactNode;
-  // songs: Song[];
+  songs: Song[];
 }
 
-const Sidebar = ({ children }: SidebarProps) => {
+const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
   const pathname = usePathname();
   // const player = usePlayer();
 
@@ -46,7 +46,7 @@ const Sidebar = ({ children }: SidebarProps) => {
         `
         flex 
         h-full
-        `,
+        `
         // player.activeId && "h-[calc(100%-80px)]"
       )}
     >
@@ -70,7 +70,7 @@ const Sidebar = ({ children }: SidebarProps) => {
           </div>
         </Box>
         <Box className="overflow-y-auto h-full">
-          <Library />
+          <Library songs={songs} />
         </Box>
       </div>
       <main className="h-full flex-1 overflow-y-auto py-2">{children}</main>
