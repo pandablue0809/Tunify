@@ -6,8 +6,9 @@ import SupabaseProvider from "@/providers/SupabaseProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
 import "./globals.css";
 //SupabaseProvider.tsx
-import { SessionContextProvider } from '@supabase/auth-helpers-react'
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import getSongsByUserId from "@/actions/getSongsByUserId";
+import Player from "@/components/Player";
 
 const font = Figtree({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const userSongs = await getSongsByUserId()
+  const userSongs = await getSongsByUserId();
 
   return (
     <html lang="en">
@@ -33,6 +34,7 @@ export default async function RootLayout({
           <UserProvider>
             <ModalProvider />
             <Sidebar songs={userSongs}>{children}</Sidebar>
+            <Player />
           </UserProvider>
         </SupabaseProvider>
       </body>
