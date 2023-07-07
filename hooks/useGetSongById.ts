@@ -27,7 +27,7 @@ const useGetSongById = (id?: string) => {
         return toast.error(error.message);
       }
 
-      setSong((data) => song);
+      setSong(data as Song);
       setIsLoading(false);
     };
 
