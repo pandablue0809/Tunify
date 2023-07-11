@@ -4,3 +4,7 @@ import { NextResponse } from "next/server";
 import { stripe } from "@/libs/stripe";
 import { getURL } from "@/libs/helpers";
 import { createOrRetrieveCustomer } from "@/libs/supabaseAdmin";
+
+export async function POST() {
+  
+}
