@@ -11,7 +11,7 @@ import usePlayer from "@/hooks/usePlayer";
 import { useEffect, useState } from "react";
 import useSound from "use-sound";
 interface PlayerContentProps {
-  song: Song[];
+  song: Song;
   songUrl: string;
 }
 
