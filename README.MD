@@ -32,7 +32,7 @@ Key Features:
 ### Cloning the repository
 
 ```shell
-git clone https://github.com/arjunan-k/Tunify
+git clone https://github.com/pandablue/Tunify
 ```
 
 ### Install packages
